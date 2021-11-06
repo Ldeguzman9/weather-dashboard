@@ -4,10 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css"
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
   </head>
   <body>
-      <script src="./assets/js/script.js"></script>
+    <div class="wrapper">
+      <header>
+        <h1>Weather Dashboard</h1>
+      </header>
+      <div id="search-bar">
+        <h2>Search for a City:</h2>
+        <input type="text" />
+        <button id="search-button" type="submit"></button>
+        <hr />
+        <div id="quick-search">
+          <button class="city-button" type="submit">Austin</button>
+          <button class="city-button" type="submit">Chicago</button>
+          <button class="city-button" type="submit">New York</button>
+          <button class="city-button" type="submit">Orlando</button>
+          <button class="city-button" type="submit">San Fransisco</button>
+          <button class="city-button" type="submit">Seattle</button>
+          <button class="city-button" type="submit">Denver</button>
+          <button class="city-button" type="submit">Atlanta</button>
+        </div>
+      </div>
+      <div id="current-location">
+        <h2>Current City Placeholder</h2>
+        <ul id="weather-details">
+          <li>Temp:</li>
+          <li>Wind:</li>
+          <li>Humidity:</li>
+          <li>UV Index:</li>
+        </ul>
+      </div>
+      <div id="five-day-card">
+        <h2>5-Day Forecast:</h2>
+        <ul id="five-day-forecast">
+          <li class="single-day-forecast"></li>
+          <li class="single-day-forecast"></li>
+          <li class="single-day-forecast"></li>
+          <li class="single-day-forecast"></li>
+          <li class="single-day-forecast"></li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
