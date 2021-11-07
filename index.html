@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--Style Links-->    
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
@@ -12,51 +13,118 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header class="row justify-content-center bg-primary">
-      <h1>Weather Dashboard</h1>
-    </header>
-    <div class="wrapper">
-      <div class="row">
-        <div id="search-bar" class="col-md-4 justify-content-center">
-          <h2>Search for a City:</h2>
-          <input type="text" class="col" />
-          <br />
-          <button id="search-button" class="col" type="submit">Search</button>
-          <hr />
-          <div id="quick-search" class="col-md-auto">
-            <button class="city-button col" type="submit">Austin</button>
-            <button class="city-button col" type="submit">Chicago</button>
-            <button class="city-button col" type="submit">New York</button>
-            <button class="city-button col" type="submit">Orlando</button>
-            <button class="city-button col" type="submit">San Fransisco</button>
-            <button class="city-button col" type="submit">Seattle</button>
-            <button class="city-button col" type="submit">Denver</button>
-            <button class="city-button col" type="submit">Atlanta</button>
+    <!--Page Container Begin-->
+    <div class="container-fluid">
+      <!--Header Begin-->
+      <header class="row justify-content-center bg-primary">
+        <h1>Weather Dashboard</h1>
+      </header>
+      <!--Header End-->
+
+      <!--Main Begin-->
+      <main class="wrapper">
+        <div class="row">
+          <!--Side Search Bar Begin-->
+          <div id="search-bar" class="col-md-4 justify-content-center">
+            <h2>Search for a City:</h2>
+            <input type="text" class="col" />
+            <br />
+            <button id="search-button" class="col" type="submit">Search</button>
+            <hr />
+            <!-- Left Colomn List Begin-->
+            <div id="quick-search" class="col-md-auto">
+              <button class="city-button col" type="submit">Austin</button>
+              <button class="city-button col" type="submit">Chicago</button>
+              <button class="city-button col" type="submit">New York</button>
+              <button class="city-button col" type="submit">Orlando</button>
+              <button class="city-button col" type="submit">
+                San Fransisco
+              </button>
+              <button class="city-button col" type="submit">Seattle</button>
+              <button class="city-button col" type="submit">Denver</button>
+              <button class="city-button col" type="submit">Atlanta</button>
+            </div>
+            <!-- Left Colomn List End-->
+          </div>
+          <!--Side Search Bar End-->
+
+          <!--Search Results Container Begin-->
+          <div class="container col-md-8">
+            <div id="current-location" class="border border-dark">
+              <h2>Current City Placeholder</h2>
+              <ul id="weather-details">
+                <li>Temp:</li>
+                <li>Wind:</li>
+                <li>Humidity:</li>
+                <li>UV Index:</li>
+              </ul>
+            </div>
+            <!--Search Results Container End-->
+
+            <!--Five Day Forecast Container Begin-->
+            <div id="five-day-card col-md-8">
+              <h2>5-Day Forecast:</h2>
+              <div id="five-day-forecast" class="row">
+                <span class="single-day-forecast">
+                  <h3 id="date"></h3>
+                  <ul id="weather-details">
+                    <li>EMOJI</li>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                  </ul>
+                </span>
+
+                <span class="single-day-forecast">
+                  <h3 id="date"></h3>
+                  <ul id="weather-details">
+                    <li>EMOJI</li>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                  </ul>
+                </span>
+
+                <span class="single-day-forecast">
+                  <h3 id="date"></h3>
+                  <ul id="weather-details">
+                    <li>EMOJI</li>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                  </ul>
+                </span>
+
+                <span class="single-day-forecast">
+                  <h3 id="date"></h3>
+                  <ul id="weather-details">
+                    <li>EMOJI</li>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                  </ul>
+                </span>
+
+                <span class="single-day-forecast">
+                  <h3 id="date"></h3>
+                  <ul id="weather-details">
+                    <li>EMOJI</li>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                  </ul>
+                </span>
+        <!--Five Day Forecast Container End-->
+              
+            </div>
           </div>
         </div>
-        <div class="container col-md-8">
-          <div id="current-location" class="border border-dark">
-            <h2>Current City Placeholder</h2>
-            <ul id="weather-details">
-              <li>Temp:</li>
-              <li>Wind:</li>
-              <li>Humidity:</li>
-              <li>UV Index:</li>
-            </ul>
-          </div>
-          <div id="five-day-card col-md-8">
-            <h2>5-Day Forecast:</h2>
-            <ul id="five-day-forecast" class="row">
-              <li class="single-day-forecast">PH</li>
-              <li class="single-day-forecast">PH</li>
-              <li class="single-day-forecast">PH</li>
-              <li class="single-day-forecast">PH</li>
-              <li class="single-day-forecast">PH</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      </main>
+      <!--Main End-->
     </div>
+    <!--Page Container End-->
+
+<!--Script Links-->
     <script src="https://openweathermap.org/api/one-call-api#current"></script>
     <script src="./assets/js/script.js"></script>
   </body>
