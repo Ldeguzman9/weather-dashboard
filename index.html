@@ -17,24 +17,25 @@
     </header>
     <div class="wrapper">
       <div class="row">
-        <div id="search-bar" class="col-md-4">
+        <div id="search-bar" class="col-md-4 justify-content-center">
           <h2>Search for a City:</h2>
-          <input type="text" />
-          <button id="search-button" class="col-md-auto" type="submit"></button>
+          <input type="text" class="col" />
+          <br />
+          <button id="search-button" class="col" type="submit">Search</button>
           <hr />
           <div id="quick-search" class="col-md-auto">
-            <button class="city-button" type="submit">Austin</button>
-            <button class="city-button" type="submit">Chicago</button>
-            <button class="city-button" type="submit">New York</button>
-            <button class="city-button" type="submit">Orlando</button>
-            <button class="city-button" type="submit">San Fransisco</button>
-            <button class="city-button" type="submit">Seattle</button>
-            <button class="city-button" type="submit">Denver</button>
-            <button class="city-button" type="submit">Atlanta</button>
+            <button class="city-button col" type="submit">Austin</button>
+            <button class="city-button col" type="submit">Chicago</button>
+            <button class="city-button col" type="submit">New York</button>
+            <button class="city-button col" type="submit">Orlando</button>
+            <button class="city-button col" type="submit">San Fransisco</button>
+            <button class="city-button col" type="submit">Seattle</button>
+            <button class="city-button col" type="submit">Denver</button>
+            <button class="city-button col" type="submit">Atlanta</button>
           </div>
         </div>
         <div class="container col-md-8">
-          <div id="current-location">
+          <div id="current-location" class="border border-dark">
             <h2>Current City Placeholder</h2>
             <ul id="weather-details">
               <li>Temp:</li>
@@ -45,18 +46,18 @@
           </div>
           <div id="five-day-card col-md-8">
             <h2>5-Day Forecast:</h2>
-            <ul id="five-day-forecast">
-              <li class="single-day-forecast"></li>
-              <li class="single-day-forecast"></li>
-              <li class="single-day-forecast"></li>
-              <li class="single-day-forecast"></li>
-              <li class="single-day-forecast"></li>
+            <ul id="five-day-forecast" class="row">
+              <li class="single-day-forecast">PH</li>
+              <li class="single-day-forecast">PH</li>
+              <li class="single-day-forecast">PH</li>
+              <li class="single-day-forecast">PH</li>
+              <li class="single-day-forecast">PH</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-
+    <script src="https://openweathermap.org/api/one-call-api#current"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
