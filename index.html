@@ -27,22 +27,13 @@
           <!--Side Search Bar Begin-->
           <div id="search-bar" class="col-md-4 justify-content-center">
             <h2>Search for a City:</h2>
-            <input type="text" class="col" />
+            <input type="text" id="city" class="col" />
             <br />
             <button id="search-button" class="col" type="submit">Search</button>
             <hr />
             <!-- Left Colomn List Begin-->
             <div id="quick-search" class="col-md-auto">
-              <button class="city-button col" type="submit">Austin</button>
-              <button class="city-button col" type="submit">Chicago</button>
-              <button class="city-button col" type="submit">New York</button>
-              <button class="city-button col" type="submit">Orlando</button>
-              <button class="city-button col" type="submit">
-                San Fransisco
-              </button>
-              <button class="city-button col" type="submit">Seattle</button>
-              <button class="city-button col" type="submit">Denver</button>
-              <button class="city-button col" type="submit">Atlanta</button>
+              
             </div>
             <!-- Left Colomn List End-->
           </div>
@@ -51,70 +42,16 @@
           <!--Search Results Container Begin-->
           <div class="container col-md-8">
             <div id="current-location" class="border border-dark">
-              <h2>Current City Placeholder</h2>
-              <ul id="weather-details">
-                <li>Temp:</li>
-                <li>Wind:</li>
-                <li>Humidity:</li>
-                <li>UV Index:</li>
-              </ul>
+              <h3></h3>
+              <p></p>
             </div>
-            <!--Search Results Container End-->
+           <!--Search Results Container End-->
 
             <!--Five Day Forecast Container Begin-->
             <div id="five-day-card col-md-8">
               <h2>5-Day Forecast:</h2>
               <div id="five-day-forecast" class="row">
-                <span class="single-day-forecast">
-                  <h3 id="date"></h3>
-                  <ul id="weather-details">
-                    <li>EMOJI</li>
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
-                  </ul>
-                </span>
-
-                <span class="single-day-forecast">
-                  <h3 id="date"></h3>
-                  <ul id="weather-details">
-                    <li>EMOJI</li>
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
-                  </ul>
-                </span>
-
-                <span class="single-day-forecast">
-                  <h3 id="date"></h3>
-                  <ul id="weather-details">
-                    <li>EMOJI</li>
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
-                  </ul>
-                </span>
-
-                <span class="single-day-forecast">
-                  <h3 id="date"></h3>
-                  <ul id="weather-details">
-                    <li>EMOJI</li>
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
-                  </ul>
-                </span>
-
-                <span class="single-day-forecast">
-                  <h3 id="date"></h3>
-                  <ul id="weather-details">
-                    <li>EMOJI</li>
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
-                  </ul>
-                </span>
-        <!--Five Day Forecast Container End-->
+            <!--Five Day Forecast Container End-->
               
             </div>
           </div>
@@ -126,6 +63,7 @@
 
 <!--Script Links-->
     <script src="https://openweathermap.org/api/one-call-api#current"></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
