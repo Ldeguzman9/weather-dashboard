@@ -1,1 +1,27 @@
+/*Custom Style*/
 
+h1 {
+  color: white;
+  padding: 20px;
+}
+
+h2 {
+  padding: 20px;
+}
+
+.quick-search-item {
+  background-color: gray;
+  color: white;
+  padding: 0;
+  text-align: center;
+  margin: 10px;
+}
+
+.card {
+  width: 100%;
+}
+
+.fiveDay {
+  background-color: royalblue;
+  margin: 15px;
+}

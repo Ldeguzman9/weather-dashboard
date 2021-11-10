@@ -9,18 +9,18 @@ function getItems() {
     pastSearch = citySearchHistory;
   }
   //Add Searches to past list
-  for (i = 0; i < citySearchHistory.length; i++) {
+  for (i = 0; i < pastSearch.length; i++) {
     if (i == 8) {
       break;
     }
     //  creates links/buttons https://getbootstrap.com/docs/4./components/list-group/
     citySearchButton = $("<a>").attr({
-      class: "list-group-item list-group-item-action",
+      class: "quick-search-item quick-search-item-action",
       href: "#",
     });
     // appends history as a button below the search field
-    citySearchButton.text(citySearchHistory[i]);
-    $(".list-group").append(citySearchButton);
+    citySearchButton.text(pastSearch[i]);
+    $(".quick-search").append(citySearchButton);
   }
 }
 
@@ -132,7 +132,27 @@ var forecast = function (lat, lon) {
 };
 
 // Save to local storage
+$("#search-button").click(function () {
+  city = $("#city").val().trim();
+  citySearch();
+  var checkArray = pastSearch.includes(city);
+  if (checkArray == true) {
+    return;
+  } else {
+    pastSearch.push(city);
+    localStorage.setItem("pastSearch", JSON.stringify(pastSearch));
+    var cityListBtn = $("<a>").attr({
+      // quick-search-item-action keeps the search history buttons consistent
+      class: "quick-search-item quick-search-item-action",
+      href: "#",
+    });
+    cityListBtn.text(city);
+    $(".quick-search").append(cityListBtn);
+  }
+});
 
-// var setItems = function () {};
-
-// var getItems = function () {};
+// listens for action on the history buttons(event)
+$(".quick-search-item").click(function () {
+  city = $(this).text();
+  citySearch();
+});
