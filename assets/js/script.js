@@ -46,12 +46,17 @@ var citySearch = function (city) {
   }).then(function (response) {
     console.log(response);
     // Current City Title
-    var date = moment().format("MMMM Do YYYY, h:mm:ss a");
-    var mainCityName = $("<h3>").html(city + date);
+    var date = moment().format("MM/DD/YYYY");
+    var mainCityName = city;
+    currentLocation.append($("<h3>").html(city + "-" + date));
     // API key c0ff9f8846dfedac696381dd7ae61e6e
+
     // Current City Details
     // Weather Icon
     var icon = response.weather.icon;
+    currentLocation.append(
+      $("<p>").html("http://openweathermap.org/img/w/" + icon + ".png")
+    );
 
     // Current Temperature
     var temp = response.main.temp;
@@ -97,12 +102,31 @@ var forecast = function (lat, lon) {
   }).then(function (forecastResponse) {
     console.log(forecastResponse);
     for (var i = 1; i < forecastResponse.daily.length - 2; i++) {
-      var temp = $("<h3>").text(
-        "Temperature: " + forecastResponse.daily[i].temp.max
+      var card = $("<div>").attr(
+        "class",
+        "col fiveDay bg-primary text-white rounded-lg p-2"
       );
-
-      var card = $("<span>").addClass("card").append(temp);
       $("#five-day-forecast").append(card);
+
+      // Date
+      var date = moment().format("MM/DD/YYYY");
+      card.append($("<h4>").text(date));
+
+      // // Temperature
+      var temp = "Temperature: " + forecastResponse.daily[i].temp.max;
+      card.append($("<h4>").text(temp));
+
+      // // Wind Speed
+      var wind = "Wind Speed: " + forecastResponse.daily[i].wind_speed;
+      card.append($("<h4>").text(wind));
+
+      // // Humidity
+      var humidity = "Humidity: " + forecastResponse.daily[i].humidity;
+      card.append($("<h4>").text(humidity));
+
+      // // UVI
+      var uvi = "UV Index: " + forecastResponse.daily[i].uvi;
+      card.append($("<h4>").text(uvi));
     }
   });
 };
