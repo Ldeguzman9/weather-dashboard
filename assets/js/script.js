@@ -2,13 +2,14 @@
 var pastSearch = [];
 var currentLocation = $("#current-location");
 
+// //Retrieve from local storage
 function getItems() {
   var citySearchHistory = JSON.parse(localStorage.getItem("pastSearch"));
   if (citySearchHistory !== null) {
     pastSearch = citySearchHistory;
   }
-  // lists up to 8 locations
-  for (i = 0; i < searchHistory.length; i++) {
+  //Add Searches to past list
+  for (i = 0; i < citySearchHistory.length; i++) {
     if (i == 8) {
       break;
     }
@@ -22,6 +23,7 @@ function getItems() {
     $(".list-group").append(citySearchButton);
   }
 }
+
 // Search button
 $("#search-button").on("click", function () {
   var city = $("#city").val().trim();
@@ -31,17 +33,18 @@ $("#search-button").on("click", function () {
 
 //Search function
 var city;
-var citySearch = function () {
+var citySearch = function (city) {
   queryUrl =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     city +
-    "&appid=c0ff9f8846dfedac696381dd7ae61e6e";
+    "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial";
   currentLocation.empty();
   $("#five-day-forecast").empty();
   $.ajax({
     url: queryUrl,
     method: "GET",
   }).then(function (response) {
+    console.log(response);
     // Current City Title
     var date = moment().format("MMMM Do YYYY, h:mm:ss a");
     var mainCityName = $("<h3>").html(city + date);
@@ -51,7 +54,7 @@ var citySearch = function () {
     var icon = response.weather.icon;
 
     // Current Temperature
-    var temp = response.temperature;
+    var temp = response.main.temp;
     currentLocation.append($("<p>").html("Temperature: " + temp + " &#8457"));
 
     // Wind Speed
@@ -67,21 +70,45 @@ var citySearch = function () {
     var lon = response.coord.lon;
     $.ajax({
       url:
-        "https://api.openweathermap.org/data/2.5/uvi?appid=c0ff9f8846dfedac696381dd7ae61e6elat=" +
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" +
         lat +
         "&lon=" +
-        lon,
+        lon +
+        "&appid=c0ff9f8846dfedac696381dd7ae61e6e",
       method: "GET",
-    }).then(function (response) {
+    }).then(function (uviResponse) {
       currentLocation.append(
-        $("<p>").html("UV Index: <span>" + response.value + "</span>")
+        $("<p>").html("UV Index: <span>" + uviResponse.current.uvi + "</span>")
       );
+      forecast(lat, lon);
     });
   });
 };
-//Add Searches to past list
 
-// //Save to local storage
+var forecast = function (lat, lon) {
+  $.ajax({
+    url:
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial",
+    method: "GET",
+  }).then(function (forecastResponse) {
+    console.log(forecastResponse);
+    for (var i = 1; i < forecastResponse.daily.length - 2; i++) {
+      var temp = $("<h3>").text(
+        "Temperature: " + forecastResponse.daily[i].temp.max
+      );
+
+      var card = $("<span>").addClass("card").append(temp);
+      $("#five-day-forecast").append(card);
+    }
+  });
+};
+
+// Save to local storage
+
 // var setItems = function () {};
-// //Retrieve from local storage
-// var getItems = function () {}};
+
+// var getItems = function () {};
