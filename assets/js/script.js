@@ -26,17 +26,9 @@ function getItems() {
   }
 }
 
-// Search button
-$("#search-button").on("click", function () {
-  var city = $("#city").val().trim();
-  console.log(city);
-
-  citySearch(city);
-});
-
 //Search function
 var city;
-var citySearch = function (city) {
+var citySearch = function () {
   queryUrl =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     city +
@@ -152,19 +144,20 @@ $("#search-button").click(function () {
   } else {
     pastSearch.push(city);
     localStorage.setItem("pastSearch", JSON.stringify(pastSearch));
-    var cityListBtn = $("<a>").attr({
+    var cityListButton = $("<a>").attr({
       // quick-search-item-action keeps the search history buttons consistent
       class: "quick-search-item quick-search-item-action",
       href: "#",
     });
-    cityListBtn.text(city);
-    $(".quick-search").append(cityListBtn);
-    $("input").val("");
+    cityListButton.text(city);
+    $(".quick-search").append(cityListButton);
+    $(".list-group").append(cityListButton);
   }
 });
 
-// Past Search City Reload Button
-$(".quick-search-item").click(function () {
+// Past Search button click event
+$("quick-search-item").click(function () {
   console.log("click");
-  citySearch(this);
+  city = $(this).text();
+  citySearch();
 });
