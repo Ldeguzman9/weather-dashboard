@@ -57,10 +57,9 @@ var citySearch = function (city) {
 
     // Current City Details
     // Weather Icon
-    var icon = response.weather.icon;
-    currentLocation.append(
-      $("<p>").html("http://openweathermap.org/img/w/" + icon + ".png")
-    );
+    var weatherIcon = response.weather[0].icon;
+    var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+    currentLocation.append($("<img>").attr("src", iconURL));
 
     // Current Temperature
     var temp = response.main.temp;
@@ -125,6 +124,8 @@ var forecast = function (lat, lon) {
       // Date
       var date = moment().format("MM/DD/YYYY");
       card.append($("<h4>").text(date));
+
+      // Weather Icon
 
       // // Temperature
       var temp = "Temperature: " + forecastResponse.daily[i].temp.max;
