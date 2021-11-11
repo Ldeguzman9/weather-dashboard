@@ -1,8 +1,9 @@
 // Past searches
 var pastSearch = [];
 var currentLocation = $("#current-location");
+var fiveDayCard = $("#five-day-card");
 
-// //Retrieve from local storage
+//Retrieve from local storage
 function getItems() {
   var citySearchHistory = JSON.parse(localStorage.getItem("pastSearch"));
   if (citySearchHistory !== null) {
@@ -13,14 +14,15 @@ function getItems() {
     if (i == 8) {
       break;
     }
-    //  creates links/buttons https://getbootstrap.com/docs/4./components/list-group/
-    citySearchButton = $("<a>").attr({
-      class: "quick-search-item quick-search-item-action",
+
+    //  creates links/buttons
+    cityListButton = $("<a>").attr({
+      class: "list-group-item list-group-item-action",
       href: "#",
     });
     // appends history as a button below the search field
-    citySearchButton.text(pastSearch[i]);
-    $(".quick-search").append(citySearchButton);
+    cityListButton.text(pastSearch[i]);
+    $(".list-group").append(cityListButton);
   }
 }
 
@@ -28,6 +30,7 @@ function getItems() {
 $("#search-button").on("click", function () {
   var city = $("#city").val().trim();
   console.log(city);
+
   citySearch(city);
 });
 
@@ -48,7 +51,8 @@ var citySearch = function (city) {
     // Current City Title
     var date = moment().format("MM/DD/YYYY");
     var mainCityName = city;
-    currentLocation.append($("<h3>").html(city + "-" + date));
+    currentLocation.addClass("border border-dark");
+    currentLocation.append($("<h3>").html(city + " - " + date));
     // API key c0ff9f8846dfedac696381dd7ae61e6e
 
     // Current City Details
@@ -85,6 +89,15 @@ var citySearch = function (city) {
       currentLocation.append(
         $("<p>").html("UV Index: <span>" + uviResponse.current.uvi + "</span>")
       );
+      if (uviResponse.current.uvi <= 2) {
+        $("span").attr("class", "bg-success");
+      }
+      if (uviResponse.current.uvi > 2 && response.value <= 5) {
+        $("span").attr("class", "bg-warning");
+      }
+      if (uviResponse.current.uvi > 5) {
+        $("span").attr("class", "bg-danger");
+      }
       forecast(lat, lon);
     });
   });
@@ -101,6 +114,7 @@ var forecast = function (lat, lon) {
     method: "GET",
   }).then(function (forecastResponse) {
     console.log(forecastResponse);
+
     for (var i = 1; i < forecastResponse.daily.length - 2; i++) {
       var card = $("<div>").attr(
         "class",
@@ -114,19 +128,15 @@ var forecast = function (lat, lon) {
 
       // // Temperature
       var temp = "Temperature: " + forecastResponse.daily[i].temp.max;
-      card.append($("<h4>").text(temp));
+      card.append($("<p>").text(temp));
 
       // // Wind Speed
       var wind = "Wind Speed: " + forecastResponse.daily[i].wind_speed;
-      card.append($("<h4>").text(wind));
+      card.append($("<p>").text(wind));
 
       // // Humidity
       var humidity = "Humidity: " + forecastResponse.daily[i].humidity;
-      card.append($("<h4>").text(humidity));
-
-      // // UVI
-      var uvi = "UV Index: " + forecastResponse.daily[i].uvi;
-      card.append($("<h4>").text(uvi));
+      card.append($("<p>").text(humidity));
     }
   });
 };
@@ -148,11 +158,12 @@ $("#search-button").click(function () {
     });
     cityListBtn.text(city);
     $(".quick-search").append(cityListBtn);
+    $("input").val("");
   }
 });
 
-// listens for action on the history buttons(event)
+// Past Search City Reload Button
 $(".quick-search-item").click(function () {
-  city = $(this).text();
-  citySearch();
+  console.log("click");
+  citySearch(this);
 });
