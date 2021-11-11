@@ -118,6 +118,9 @@ var forecast = function (lat, lon) {
       card.append($("<h4>").text(date));
 
       // Weather Icon
+      var weatherIcon = forecastResponse.daily[i].weather.icon;
+      var iconURL = "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
+      card.append($("<img>").attr("src", iconURL));
 
       // // Temperature
       var temp = "Temperature: " + forecastResponse.daily[i].temp.max;
