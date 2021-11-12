@@ -34,7 +34,7 @@ var city;
 
 var citySearch = function () {
   queryUrl =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial";
   currentLocation.empty();
@@ -54,7 +54,7 @@ var citySearch = function () {
     // Current City Details
     // Weather Icon
     var weatherIcon = response.weather[0].icon;
-    var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+    var iconURL = "https://openweathermap.org/img/w/" + weatherIcon + ".png";
     currentLocation.append($("<img>").attr("src", iconURL));
 
     // Current Temperature
