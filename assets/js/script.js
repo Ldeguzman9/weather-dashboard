@@ -10,7 +10,7 @@ function getItems() {
     pastSearch = citySearchHistory;
   }
   //Add Searches to past list
-  for (i = 0; i < pastSearch.length; i++) {
+  for (i = 0; i < citySearchHistory.length; i++) {
     if (i == 8) {
       break;
     }
@@ -26,10 +26,12 @@ function getItems() {
   }
 }
 
+// call get item function
 getItems();
 
 //Search function
 var city;
+
 var citySearch = function () {
   queryUrl =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -149,8 +151,7 @@ $("#search-button").click(function () {
   } else {
     pastSearch.push(city);
     localStorage.setItem("pastSearch", JSON.stringify(pastSearch));
-    // if (pastSearch.length > 8)
-    //   break;
+
     var cityListButton = $("<a>").attr({
       // quick-search-item-action keeps the search history buttons consistent
       class: "quick-search-item quick-search-item-action",
