@@ -21,12 +21,14 @@ p {
   border: none;
 }
 
-.quick-search-item {
+.quick-search-item,
+.list-group-item {
   background-color: gray;
   color: white;
   padding: 0;
   text-align: center;
   margin: 10px;
+  width: 100%;
 }
 
 .card {

@@ -5,7 +5,7 @@ var fiveDayCard = $("#five-day-card");
 
 //Retrieve from local storage
 function getItems() {
-  var citySearchHistory = JSON.parse(localStorage.getItem("pastSearch"));
+  var citySearchHistory = JSON.parse(localStorage.getItem("pastSearch")) || [];
   if (citySearchHistory !== null) {
     pastSearch = citySearchHistory;
   }
@@ -20,11 +20,13 @@ function getItems() {
       class: "list-group-item list-group-item-action",
       href: "#",
     });
-    // appends history as a button below the search field
+    // past search as a button below the search field
     cityListButton.text(pastSearch[i]);
-    $(".list-group").append(cityListButton);
+    $("#quick-search").append(cityListButton);
   }
 }
+
+getItems();
 
 //Search function
 var city;
@@ -114,12 +116,12 @@ var forecast = function (lat, lon) {
       $("#five-day-forecast").append(card);
 
       // Date
-      var date = moment().format("MM/DD/YYYY");
+      var date = moment.unix(forecastResponse.daily[i].dt).format("MM/DD/YYYY");
       card.append($("<h4>").text(date));
 
       // Weather Icon
-      var weatherIcon = forecastResponse.daily[i].weather.icon;
-      var iconURL = "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
+      var weatherIcons = forecastResponse.daily[i].weather[0].icon;
+      var iconURL = "http://openweathermap.org/img/w/" + weatherIcons + ".png";
       card.append($("<img>").attr("src", iconURL));
 
       // // Temperature
@@ -147,6 +149,8 @@ $("#search-button").click(function () {
   } else {
     pastSearch.push(city);
     localStorage.setItem("pastSearch", JSON.stringify(pastSearch));
+    // if (pastSearch.length > 8)
+    //   break;
     var cityListButton = $("<a>").attr({
       // quick-search-item-action keeps the search history buttons consistent
       class: "quick-search-item quick-search-item-action",
@@ -155,12 +159,12 @@ $("#search-button").click(function () {
     cityListButton.text(city);
     $(".quick-search").append(cityListButton);
     $(".list-group").append(cityListButton);
+    $("#city").val("");
   }
 });
 
-// Past Search button click event
-$("quick-search-item").click(function () {
-  console.log("click");
+// past search buttons
+$("#quick-search").on("click", "a", function () {
   city = $(this).text();
-  citySearch();
+  citySearch(city);
 });
