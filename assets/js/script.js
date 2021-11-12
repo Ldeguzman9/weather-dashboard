@@ -123,7 +123,7 @@ var forecast = function (lat, lon) {
 
       // Weather Icon
       var weatherIcons = forecastResponse.daily[i].weather[0].icon;
-      var iconURL = "http://openweathermap.org/img/w/" + weatherIcons + ".png";
+      var iconURL = "https://openweathermap.org/img/w/" + weatherIcons + ".png";
       card.append($("<img>").attr("src", iconURL));
 
       // // Temperature
