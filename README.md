@@ -11,9 +11,9 @@ This is a weather dashboard with form inputs in which auser can search for a cit
 # Calendar Screen Shots
 
 - **Main Screen:**
-  ![Weather Dashboard Start Screen](LINK)
+  ![Weather Dashboard Start Screen](https://github.com/Ldeguzman9/weather-dashboard/blob/feature/readme/assets/images/Start%20Screen.png?raw=true)
 - **Dashboard:**
-  ![Weather Dashboard](LINK)
+  ![Weather Dashboard](https://github.com/Ldeguzman9/weather-dashboard/blob/feature/readme/assets/images/Weather%20Dashboard.png?raw=true)
 
 # Technical Skills
 
