@@ -1,6 +1,6 @@
 # weather-dashboard
 
-This is a weather dashboard with form inputs in which auser can search for a city and is presented with current and future conditions for that city. The city is then added to the search history.
+This is a weather dashboard with form inputs in which a user can search for a city and is presented with current and future conditions for that city. The city is then added to the search history.
 
 # Dashboard Features:
 
