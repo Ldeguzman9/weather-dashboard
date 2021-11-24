@@ -34,7 +34,7 @@ var city;
 
 var citySearch = function () {
   queryUrl =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    "http://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial";
   currentLocation.empty();
@@ -54,7 +54,7 @@ var citySearch = function () {
     // Current City Details
     // Weather Icon
     var weatherIcon = response.weather[0].icon;
-    var iconURL = "https://openweathermap.org/img/w/" + weatherIcon + ".png";
+    var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
     currentLocation.append($("<img>").attr("src", iconURL));
 
     // Current Temperature
@@ -74,7 +74,7 @@ var citySearch = function () {
     var lon = response.coord.lon;
     $.ajax({
       url:
-        "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+        "http://api.openweathermap.org/data/2.5/onecall?lat=" +
         lat +
         "&lon=" +
         lon +
@@ -101,7 +101,7 @@ var citySearch = function () {
 var forecast = function (lat, lon) {
   $.ajax({
     url:
-      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+      "http://api.openweathermap.org/data/2.5/onecall?lat=" +
       lat +
       "&lon=" +
       lon +
@@ -123,7 +123,7 @@ var forecast = function (lat, lon) {
 
       // Weather Icon
       var weatherIcons = forecastResponse.daily[i].weather[0].icon;
-      var iconURL = "https://openweathermap.org/img/w/" + weatherIcons + ".png";
+      var iconURL = "http://openweathermap.org/img/w/" + weatherIcons + ".png";
       card.append($("<img>").attr("src", iconURL));
 
       // // Temperature
