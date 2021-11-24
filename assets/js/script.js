@@ -33,10 +33,10 @@ getItems();
 var city;
 
 var citySearch = function () {
-  queryUrl =
+  queryUrl = 
     "api.openweathermap.org/data/2.5/weather?q=" +
     city +
-    "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial";
+    "&appid=ae908e73f74af0021181ca2bd03db58d=imperial";
   currentLocation.empty();
   $("#five-day-forecast").empty();
   $.ajax({
@@ -78,7 +78,7 @@ var citySearch = function () {
         lat +
         "&lon=" +
         lon +
-        "&appid=c0ff9f8846dfedac696381dd7ae61e6e",
+        "&appid=ae908e73f74af0021181ca2bd03db58d",
       method: "GET",
     }).then(function (uviResponse) {
       currentLocation.append(
@@ -105,7 +105,7 @@ var forecast = function (lat, lon) {
       lat +
       "&lon=" +
       lon +
-      "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial",
+      "&appid=ae908e73f74af0021181ca2bd03db58d&units=imperial",
     method: "GET",
   }).then(function (forecastResponse) {
     console.log(forecastResponse);
