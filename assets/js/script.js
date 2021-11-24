@@ -36,7 +36,7 @@ var citySearch = function () {
   queryUrl = 
     "api.openweathermap.org/data/2.5/weather?q=" +
     city +
-    "&appid=ae908e73f74af0021181ca2bd03db58d=imperial";
+    "&appid=ae908e73f74af0021181ca2bd03db58d&units=imperial";
   currentLocation.empty();
   $("#five-day-forecast").empty();
   $.ajax({
