@@ -74,7 +74,7 @@ var citySearch = function () {
     var lon = response.coord.lon;
     $.ajax({
       url:
-        "http://api.openweathermap.org/data/2.5/onecall?lat=" +
+        "api.openweathermap.org/data/2.5/onecall?lat=" +
         lat +
         "&lon=" +
         lon +
@@ -101,7 +101,7 @@ var citySearch = function () {
 var forecast = function (lat, lon) {
   $.ajax({
     url:
-      "http://api.openweathermap.org/data/2.5/onecall?lat=" +
+      "api.openweathermap.org/data/2.5/onecall?lat=" +
       lat +
       "&lon=" +
       lon +
