@@ -34,7 +34,7 @@ var city;
 
 var citySearch = function () {
   queryUrl =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&appid=c0ff9f8846dfedac696381dd7ae61e6e&units=imperial";
   currentLocation.empty();
